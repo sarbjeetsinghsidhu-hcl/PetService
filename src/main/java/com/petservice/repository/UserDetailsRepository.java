@@ -12,7 +12,7 @@ import com.petservice.entity.UserDetails;
 public interface UserDetailsRepository extends JpaRepository<UserDetails, Long> {
 
 
-    UserDetails findByUserId(String userId);
+    public UserDetails findByUserId(String userId);
 
     boolean existsUserDetailsByUserId(String userId);
 
