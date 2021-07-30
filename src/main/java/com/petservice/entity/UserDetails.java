@@ -17,7 +17,10 @@ import lombok.Data;
 @Table(name="User_Details")
 @Builder
 @Data
+
+
 public class UserDetails implements Serializable {
+
 
 	@Id
 	@Column(name = "id")
@@ -39,8 +42,8 @@ public class UserDetails implements Serializable {
 	@OneToMany(mappedBy = "userDetails")
 	private List<PetOrderDetails> petOrderDetails;
 
-	public UserDetails() {
-	}
+
+
 
 	public UserDetails(Long id, String userId, String userName, String password,
 					   Character userRole, List<PetOrderDetails> petOrderDetails) {
@@ -51,4 +54,8 @@ public class UserDetails implements Serializable {
 		this.userRole = userRole;
 		this.petOrderDetails = petOrderDetails;
 	}
+
+	public UserDetails() {
+	}
+
 }

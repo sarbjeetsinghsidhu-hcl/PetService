@@ -2,12 +2,13 @@ package com.petservice.service;
 
 import java.util.List;
 
+import com.petservice.dto.EditPetDTO;
 import com.petservice.dto.PetDetailsDTO;
+import com.petservice.dto.PetDetailsRequestDTO;
+import com.petservice.dto.PetDetailsResponseDTO;
 
 /**
- * 
  * @author Team.
- *
  */
 public interface PetService {
 
@@ -37,5 +38,22 @@ public interface PetService {
 	 * @return
 	 */
 	public List<PetDetailsDTO> getPets(int page);
+
+
+    /**
+     * PetDetails for a user id.
+     *
+     * @return
+     */
+    public PetDetailsResponseDTO addPets(String adminId, PetDetailsRequestDTO petDetailsRequestDTO);
+
+    /**
+     * Adding PetDetails.
+     *
+     * @param adminId, petDetailsRequestDTO
+     * @return
+     */
+
+    public PetDetailsResponseDTO editPet(String adminId, EditPetDTO editPetDTO);
 
 }

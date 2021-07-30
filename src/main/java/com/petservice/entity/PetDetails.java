@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import lombok.Builder;
 import lombok.Data;
 
+
 @Entity
 @Table(name="pet_details")
 @Builder
@@ -51,4 +52,17 @@ public class PetDetails implements Serializable {
 	@OneToMany(mappedBy="petDetails")
 	private List<PetOrderDetails> petOrderDetails;
 
+	public PetDetails(Integer id, String petId, String petName, String petCategory, Long petAge, int petAvailibility, Double petPrice, List<PetOrderDetails> petOrderDetails) {
+		this.id = id;
+		this.petId = petId;
+		this.petName = petName;
+		this.petCategory = petCategory;
+		this.petAge = petAge;
+		this.petAvailibility = petAvailibility;
+		this.petPrice = petPrice;
+		this.petOrderDetails = petOrderDetails;
+	}
+
+	public PetDetails() {
+	}
 }
