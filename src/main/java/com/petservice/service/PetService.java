@@ -1,5 +1,7 @@
 package com.petservice.service;
 
+import java.util.List;
+
 import com.petservice.dto.PetDetailsDTO;
 
 /**
@@ -7,7 +9,7 @@ import com.petservice.dto.PetDetailsDTO;
  * @author Team.
  *
  */
-public interface Service {
+public interface PetService {
 
 	/**
 	 * 
@@ -28,4 +30,11 @@ public interface Service {
 	 * @return
 	 */
 	public PetDetailsDTO getPetDetails();
+	
+	/**
+	 * 
+	 * @param page
+	 * @return
+	 */
+	public List<PetDetailsDTO> getPets(int page);
 }

@@ -26,4 +26,10 @@ public class ExceptionHandlerInterceptor extends ResponseEntityExceptionHandler 
 		ErrorResponse response = new ErrorResponse(exception.getMessage());
 		return new ResponseEntity<>(response, HttpStatus.CONFLICT);
 	}
+	
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<ErrorResponse> handleFavouriteNotFound(Exception exception) {
+		ErrorResponse response = new ErrorResponse(exception.getMessage());
+		return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+	}
 }
