@@ -1,5 +1,6 @@
 package com.petservice.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -16,7 +17,10 @@ import lombok.Data;
 @Table(name="User_Details")
 @Builder
 @Data
-public class UserDetails implements java.io.Serializable{
+
+
+public class UserDetails implements Serializable {
+
 
 	@Id
 	@Column(name = "id")
@@ -38,7 +42,11 @@ public class UserDetails implements java.io.Serializable{
 	@OneToMany(mappedBy = "userDetails")
 	private List<PetOrderDetails> petOrderDetails;
 
-	public UserDetails(Long id, String userId, String userName, String password, Character userRole, List<PetOrderDetails> petOrderDetails) {
+
+
+
+	public UserDetails(Long id, String userId, String userName, String password,
+					   Character userRole, List<PetOrderDetails> petOrderDetails) {
 		this.id = id;
 		this.userId = userId;
 		this.userName = userName;
@@ -49,4 +57,5 @@ public class UserDetails implements java.io.Serializable{
 
 	public UserDetails() {
 	}
+
 }

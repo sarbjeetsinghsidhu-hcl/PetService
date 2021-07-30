@@ -17,13 +17,7 @@ public class ExceptionHandlerInterceptor extends ResponseEntityExceptionHandler 
 	public ResponseEntity<ErrorResponse> handleFavouriteNotFound(PetNotFound exception) {
 		ErrorResponse response = new ErrorResponse(exception.getMessage());
 		return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
-	}
-
-	@ExceptionHandler(CreationException.class)
-	public ResponseEntity<ErrorResponse> handleFavouriteNotFound(CreationException exception) {
-		ErrorResponse response = new ErrorResponse(exception.getMessage());
-		return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
-	}
+	}	
 
 	@ExceptionHandler(RecordExistException.class)
 	public ResponseEntity<ErrorResponse> handleFavouriteNotFound(RecordExistException exception) {
