@@ -11,9 +11,12 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.petservice.dto.PetDetailsDTO;
+import com.petservice.dto.UserDTO;
 import com.petservice.entity.PetDetails;
+import com.petservice.entity.UserDetails;
 import com.petservice.exception.PetNotFound;
 import com.petservice.repository.PetDetailsRepository;
+import com.petservice.repository.UserDetailsRepository;
 import com.petservice.service.PetService;
 
 @Service
@@ -24,10 +27,20 @@ public class PetServiceImpl implements PetService {
 	 */
 	@Autowired
 	private PetDetailsRepository petDetailsRepository;
+	
+	@Autowired
+	private UserDetailsRepository userDetailsRepository;
 
 	@Override
-	public PetDetailsDTO getPetDetails(String userId) {
-		// TODO Auto-generated method stub
+	public PetDetailsDTO getPetDetails(String userId,int page) {
+		Page<UserDetails> users = userDetailsRepository.findByUserId(userId, PageRequest.of(page, 5, Sort.Direction.ASC, "petName"));
+		if(users.isEmpty()) {
+			throw new PetNotFound("Not pet's availabe.");
+		}
+		users.getContent().forEach(user ->{
+			
+			
+		});
 		return null;
 	}
 
