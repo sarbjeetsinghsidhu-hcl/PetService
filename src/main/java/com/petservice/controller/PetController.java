@@ -53,7 +53,7 @@ public class PetController {
 		@ApiResponse(code = 200, message = "Successfull operation", response = PetDetailsDTO.class),
 		@ApiResponse(code = 404, message = "Favourites not found", response = ErrorResponse.class)
 	})
-	@GetMapping("/")
+	@GetMapping("")
 	public List<PetDetailsDTO> getPets(@RequestParam("page") Optional<Integer> page){
 		LOGGER.info("Getting pets.");
 		return petService.getPets(page.orElse(0));		
