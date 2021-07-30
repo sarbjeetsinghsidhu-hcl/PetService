@@ -10,7 +10,7 @@ public class PetDetailsDTO {
 
 	private Long petAge;
 
-	private String petAvailibility;
+	private int petAvailibility;
 
 	private Double petPrice;
 
@@ -29,7 +29,7 @@ public class PetDetailsDTO {
 	 * @param petAvailibility
 	 * @param petPrice
 	 */
-	public PetDetailsDTO(String petId, String petName, String petCategory, Long petAge, String petAvailibility,
+	public PetDetailsDTO(String petId, String petName, String petCategory, Long petAge, int petAvailibility,
 			Double petPrice) {
 		super();
 		this.petId = petId;
@@ -72,11 +72,11 @@ public class PetDetailsDTO {
 		this.petAge = petAge;
 	}
 
-	public String getPetAvailibility() {
+	public int getPetAvailibility() {
 		return petAvailibility;
 	}
 
-	public void setPetAvailibility(String petAvailibility) {
+	public void setPetAvailibility(int petAvailibility) {
 		this.petAvailibility = petAvailibility;
 	}
 
