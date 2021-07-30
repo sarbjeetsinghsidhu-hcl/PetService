@@ -24,6 +24,26 @@ public class ExceptionHandlerInterceptor extends ResponseEntityExceptionHandler 
 		ErrorResponse response = new ErrorResponse(exception.getMessage());
 		return new ResponseEntity<>(response, HttpStatus.CONFLICT);
 	}
+	@ExceptionHandler(AuthenticationException.class)
+	public ResponseEntity<ErrorResponse> handleFavouriteNotFound(AuthenticationException exception) {
+		ErrorResponse response = new ErrorResponse(exception.getMessage());
+		return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+	}
+	@ExceptionHandler(NoSuchUserException.class)
+	public ResponseEntity<ErrorResponse> handleFavouriteNotFound(NoSuchUserException exception) {
+		ErrorResponse response = new ErrorResponse(exception.getMessage());
+		return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+	}
+	@ExceptionHandler(EmptyFieldException.class)
+	public ResponseEntity<ErrorResponse> handleFavouriteNotFound(EmptyFieldException exception) {
+		ErrorResponse response = new ErrorResponse(exception.getMessage());
+		return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+	}
+	@ExceptionHandler(PetSoldOutException.class)
+	public ResponseEntity<ErrorResponse> handleFavouriteNotFound(PetSoldOutException exception) {
+		ErrorResponse response = new ErrorResponse(exception.getMessage());
+		return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+	}
 	
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<ErrorResponse> handleFavouriteNotFound(Exception exception) {

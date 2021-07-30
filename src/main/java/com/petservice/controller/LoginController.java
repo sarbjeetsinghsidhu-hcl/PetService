@@ -24,7 +24,7 @@ public class LoginController {
 	@Autowired
 	private final UserService userService;
 
-	@PostMapping("/login")
+	@PostMapping("")
 	@ApiOperation(value = "This method is used to login the customer")
 	public ResponseEntity<LoginResponseDto> login (@RequestBody LoginDto loginDto){
 		log.info("logging in the user"+loginDto.getUserId());

@@ -32,16 +32,24 @@ public interface PetService {
 	 */
 	public List<PetDetailsDTO> getPets(int page);
 
-    /**
-     * @param petId
-     * @return
-     */
-    public PetDetailsDTO getPetDetail(String petId);
+	/**
+	 * 
+	 * @param petId
+	 * @return
+	 */
+	public PetDetailsDTO getPetDetail(String petId);
+	
+	/**
+	 * PetDetails for a user id.
+	 * @param userId
+	 * @return
+	 */
+	public PetDetailsDTO getPetDetails(String userId);
+		
 
     /**
      * PetDetails for a user id.
      *
-     * @param userId
      * @return
      */
     public PetDetailsResponseDTO addPets(String adminId, PetDetailsRequestDTO petDetailsRequestDTO);
@@ -55,12 +63,4 @@ public interface PetService {
 
     public PetDetailsResponseDTO editPet(String adminId, EditPetDTO editPetDTO);
 
-    /**
-     * Adding PetDetails.
-     *
-     * @param adminId, editPetDTO
-     * @return
-     */
-
-    public PetDetailsDTO getPetDetails(String userId);    
 }

@@ -1,7 +1,5 @@
 package com.petservice.entity;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Builder;
 import lombok.Data;
+
+import java.time.LocalDate;
 
 @Entity
 @Table(name="Pet_Order_Details")
@@ -34,40 +34,6 @@ public class PetOrderDetails {
 	private UserDetails userDetails;
 	
 	@Column(name="purchased_on")
-	private Date purchasedOn;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public PetDetails getPetDetails() {
-		return petDetails;
-	}
-
-	public void setPetDetails(PetDetails petDetails) {
-		this.petDetails = petDetails;
-	}
-
-	public UserDetails getUserDetails() {
-		return userDetails;
-	}
-
-	public void setUserDetails(UserDetails userDetails) {
-		this.userDetails = userDetails;
-	}
-
-	public Date getPurchasedOn() {
-		return purchasedOn;
-	}
-
-	public void setPurchasedOn(Date purchasedOn) {
-		this.purchasedOn = purchasedOn;
-	}
-	
-	
+	private LocalDate purchasedOn;
 	
 }
