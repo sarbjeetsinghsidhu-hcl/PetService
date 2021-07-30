@@ -71,7 +71,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 "/swagger-ui.html",
                 "/token/generate-token",
                 "/api/v1/login/**",
-                "/api/v1/pets/**",
+                "/api/v1/pets/",
+                "/api/v1/pets//{petId}",
                 "/actuator/**",
                 "/webjars/**");
     }

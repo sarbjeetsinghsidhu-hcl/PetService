@@ -37,4 +37,5 @@ public interface PetService {
 	 * @return
 	 */
 	public List<PetDetailsDTO> getPets(int page);
+
 }
