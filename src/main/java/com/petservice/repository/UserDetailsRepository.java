@@ -8,4 +8,6 @@ import com.petservice.entity.UserDetails;
 @Repository
 public interface UserDetailsRepository extends JpaRepository<UserDetails, Long> {
 
+    UserDetails findByUserId(String userId);
+    boolean existsUserDetailsByUserId(String userId);
 }
