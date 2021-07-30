@@ -1,0 +1,41 @@
+CREATE TABLE `petservice`.`user_details` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `userId` VARCHAR(50) NOT NULL,
+  `user_name` VARCHAR(50) NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `user_role` CHAR(1) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `userId_UNIQUE` (`userId` ASC) VISIBLE)
+COMMENT = 'New Table for user details.';
+
+CREATE TABLE `petservice`.`pet_details` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `petId` VARCHAR(50) NOT NULL,
+  `pet_name` VARCHAR(50) NOT NULL,
+  `pet_category` VARCHAR(50) NOT NULL,
+  `pet_age` INT NOT NULL,
+  `pet_availability` TINYINT(1) NOT NULL,
+  `pet_price` DOUBLE NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `petId_UNIQUE` (`petId` ASC) VISIBLE);
+
+  
+  CREATE TABLE `petservice`.`pet_order_details` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `petId` VARCHAR(50) NOT NULL,
+  `userId` VARCHAR(50) NOT NULL,
+  `purchased_on` DATE NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `FK-Pets_idx` (`petId` ASC) VISIBLE,
+  INDEX `FK-UserId_idx` (`userId` ASC) VISIBLE,
+  CONSTRAINT `FK-Pets`
+    FOREIGN KEY (`petId`)
+    REFERENCES `petservice`.`pet_details` (`petId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `FK-UserId`
+    FOREIGN KEY (`userId`)
+    REFERENCES `petservice`.`user_details` (`userId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+  
