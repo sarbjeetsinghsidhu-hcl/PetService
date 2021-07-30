@@ -16,7 +16,7 @@ import lombok.Data;
 @Table(name="User_Details")
 @Builder
 @Data
-public class UserDetails {
+public class UserDetails implements java.io.Serializable{
 
 	@Id
 	@Column(name = "id")
@@ -38,5 +38,15 @@ public class UserDetails {
 	@OneToMany(mappedBy = "userDetails")
 	private List<PetOrderDetails> petOrderDetails;
 
+	public UserDetails(Long id, String userId, String userName, String password, Character userRole, List<PetOrderDetails> petOrderDetails) {
+		this.id = id;
+		this.userId = userId;
+		this.userName = userName;
+		this.password = password;
+		this.userRole = userRole;
+		this.petOrderDetails = petOrderDetails;
+	}
 
+	public UserDetails() {
+	}
 }

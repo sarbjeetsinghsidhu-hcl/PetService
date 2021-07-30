@@ -16,7 +16,7 @@ public class PetDetailsRequestDTO {
 
     private Long petAge;
 
-    private String petAvailibility;
+    private int petAvailibility;
 
     private Double petPrice;
 

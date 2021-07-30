@@ -16,7 +16,7 @@ public class EditPetDTO {
 
     private Long petAge;
 
-    private String petAvailibility;
+    private int petAvailibility;
 
     private Double petPrice;
 

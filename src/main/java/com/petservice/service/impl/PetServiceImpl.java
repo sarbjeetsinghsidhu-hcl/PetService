@@ -56,6 +56,7 @@ public class PetServiceImpl implements PetService {
         //Check whether every field is not null
 
 
+
         PetDetails pet = PetDetails.builder()
                 .petId(petDetailsRequestDTO.getPetId())
                 .petName(petDetailsRequestDTO.getPetName())
@@ -64,6 +65,10 @@ public class PetServiceImpl implements PetService {
                 .petPrice(petDetailsRequestDTO.getPetPrice())
                 .petAvailibility(petDetailsRequestDTO.getPetAvailibility())
                 .build();
+
+        if(pet == null){
+            throw new PetNotFound("Pet Not Found");
+        }
 
         petDetailsRepository.save(pet);
         return PetDetailsResponseDTO.builder()
@@ -80,7 +85,7 @@ public class PetServiceImpl implements PetService {
     }
 
 
-    public PetDetailsResponseDTO editpet(String adminId, EditPetDTO editPetDTO) {
+    public PetDetailsResponseDTO editPet(String adminId, EditPetDTO editPetDTO) {
         UserDetails user = userDetailsRepository.findByUserId(adminId);
         if (user == null) {
             throw new NoSuchUserException(ERROR_MESSAGE);
@@ -89,28 +94,33 @@ public class PetServiceImpl implements PetService {
             throw new AuthorizationException("Not Authorized");
         }
 
+        Optional<PetDetails> pet = petDetailsRepository.findByPetId(editPetDTO.getPetId());
+
+        PetDetails petDetails = null;
+
+        if (pet.isPresent())
+            petDetails=pet.get();
+        else
+            throw new PetNotFound("Pet Not Found");
 
 
-
-
-
-        PetDetails pet = petDetailsRepository.findByPetId(editPetDTO.getPetId()).get();
-        pet.setPetId(editPetDTO.getPetId());
-        pet.setPetName(editPetDTO.getPetName());
-        pet.setPetAge(editPetDTO.getPetAge());
-        pet.setPetCategory(editPetDTO.getPetCategory());
-        pet.setPetPrice(editPetDTO.getPetPrice());
-        pet.setPetAvailibility(editPetDTO.getPetAvailibility());
+        petDetails.setPetId(editPetDTO.getPetId());
+        petDetails.setPetName(editPetDTO.getPetName());
+        petDetails.setPetAge(editPetDTO.getPetAge());
+        petDetails.setPetCategory(editPetDTO.getPetCategory());
+        petDetails.setPetPrice(editPetDTO.getPetPrice());
+        petDetails.setPetAvailibility(editPetDTO.getPetAvailibility());
+        petDetailsRepository.save(petDetails);
         return PetDetailsResponseDTO.builder()
                 .statusCode(201)
                 .message("This account has been updated")
                 .petDetailsDTO(PetDetailsDTO.builder()
-                        .petId(pet.getPetId())
-                        .petName(pet.getPetName())
-                        .petAge(pet.getPetAge())
-                        .petCategory(pet.getPetCategory())
-                        .petPrice(pet.getPetPrice())
-                        .petAvailibility(pet.getPetAvailibility())
+                        .petId(petDetails.getPetId())
+                        .petName(petDetails.getPetName())
+                        .petAge(petDetails.getPetAge())
+                        .petCategory(petDetails.getPetCategory())
+                        .petPrice(petDetails.getPetPrice())
+                        .petAvailibility(petDetails.getPetAvailibility())
                         .build()).build();
     }
 
