@@ -70,6 +70,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 "/configuration/security",
                 "/swagger-ui.html",
                 "/token/generate-token",
+                "/api/v1/login/**",
+                "/api/v1/pets/**",
                 "/actuator/**",
                 "/webjars/**");
     }
