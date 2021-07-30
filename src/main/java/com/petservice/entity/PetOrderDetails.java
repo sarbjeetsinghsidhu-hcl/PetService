@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name="Pet_Order_Details")
 @Builder
