@@ -1,6 +1,5 @@
 package com.petservice.dto;
 
-import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
 
 public class UserDTO {
@@ -18,6 +17,21 @@ public class UserDTO {
 	private Character userRole;
 
 	
+
+	public UserDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public UserDTO(@NotBlank(message = "") String userId, String userName, String password, Character userRole) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.password = password;
+		this.userRole = userRole;
+	}
+
 
 	public String getUserId() {
 		return userId;

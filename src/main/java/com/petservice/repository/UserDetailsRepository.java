@@ -1,5 +1,7 @@
 package com.petservice.repository;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,4 +16,6 @@ public interface UserDetailsRepository extends JpaRepository<UserDetails, Long> 
 
     boolean existsUserDetailsByUserId(String userId);
 
+    
+    public Page<UserDetails> findByUserId(final String userId, Pageable pageable);
 }

@@ -11,20 +11,13 @@ import com.petservice.dto.PetDetailsResponseDTO;
  * @author Team.
  */
 public interface PetService {
-
-	/**
-	 * 
-	 * @param petId
-	 * @return
-	 */
-	public PetDetailsDTO getPetDetail(String petId);
 	
 	/**
 	 * PetDetails for a user id.
 	 * @param userId
 	 * @return
 	 */
-	public PetDetailsDTO getPetDetails(String userId);
+	public List<PetDetailsDTO> getPetDetails(String userId,int page);
 	
 	/**
 	 * Return all the pet details in the system.
@@ -39,6 +32,20 @@ public interface PetService {
 	 */
 	public List<PetDetailsDTO> getPets(int page);
 
+	/**
+	 * 
+	 * @param petId
+	 * @return
+	 */
+	public PetDetailsDTO getPetDetail(String petId);
+	
+	/**
+	 * PetDetails for a user id.
+	 * @param userId
+	 * @return
+	 */
+	public PetDetailsDTO getPetDetails(String userId);
+		
 
     /**
      * PetDetails for a user id.

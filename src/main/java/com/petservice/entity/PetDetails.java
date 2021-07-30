@@ -52,7 +52,9 @@ public class PetDetails implements Serializable {
 	@OneToMany(mappedBy="petDetails")
 	private List<PetOrderDetails> petOrderDetails;
 
-	public PetDetails(Integer id, String petId, String petName, String petCategory, Long petAge, int petAvailibility, Double petPrice, List<PetOrderDetails> petOrderDetails) {
+
+	public PetDetails(Integer id, String petId, String petName, String petCategory, Long petAge, int petAvailibility,
+			Double petPrice, List<PetOrderDetails> petOrderDetails) {
 		this.id = id;
 		this.petId = petId;
 		this.petName = petName;
@@ -64,5 +66,7 @@ public class PetDetails implements Serializable {
 	}
 
 	public PetDetails() {
-	}
+		super();
+		// TODO Auto-generated constructor stub
+	}	
 }

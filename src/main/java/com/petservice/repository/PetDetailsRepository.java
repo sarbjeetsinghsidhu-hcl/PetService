@@ -16,4 +16,5 @@ public interface PetDetailsRepository extends JpaRepository<PetDetails, Integer>
 	 * @return
 	 */
 	public Optional<PetDetails> findByPetId(String petId);
+	
 }
