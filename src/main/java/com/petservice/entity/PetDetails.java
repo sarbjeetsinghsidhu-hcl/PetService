@@ -10,9 +10,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import lombok.Builder;
+import lombok.Data;
 
 @Entity
 @Table(name="pet_details")
+@Builder
+@Data
 public class PetDetails implements Serializable {
 
 	/**
@@ -46,71 +50,5 @@ public class PetDetails implements Serializable {
 
 	@OneToMany(mappedBy="petDetails")
 	private List<PetOrderDetails> petOrderDetails;
-	
-	
-	public Integer getId() {
-		return id;
-	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getPetId() {
-		return petId;
-	}
-
-	public void setPetId(String petId) {
-		this.petId = petId;
-	}
-
-	public String getPetName() {
-		return petName;
-	}
-
-	public void setPetName(String petName) {
-		this.petName = petName;
-	}
-
-	public String getPetCategory() {
-		return petCategory;
-	}
-
-	public void setPetCategory(String petCategory) {
-		this.petCategory = petCategory;
-	}
-
-	public Long getPetAge() {
-		return petAge;
-	}
-
-	public void setPetAge(Long petAge) {
-		this.petAge = petAge;
-	}
-
-	public int getPetAvailibility() {
-		return petAvailibility;
-	}
-
-	public void setPetAvailibility(int petAvailibility) {
-		this.petAvailibility = petAvailibility;
-	}
-
-	public Double getPetPrice() {
-		return petPrice;
-	}
-
-	public void setPetPrice(Double petPrice) {
-		this.petPrice = petPrice;
-	}
-
-	public List<PetOrderDetails> getPetOrderDetails() {
-		return petOrderDetails;
-	}
-
-	public void setPetOrderDetails(List<PetOrderDetails> petOrderDetails) {
-		this.petOrderDetails = petOrderDetails;
-	}
-	
-	
 }
