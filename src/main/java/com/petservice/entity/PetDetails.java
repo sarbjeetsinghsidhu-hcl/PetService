@@ -5,8 +5,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,8 +12,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Builder;
 import lombok.Data;
-
-import com.petservice.PetStatus;
 
 @Entity
 @Table(name="pet_details")
@@ -50,4 +46,18 @@ public class PetDetails implements Serializable {
 	@OneToMany(mappedBy="petDetails")
 	private List<PetOrderDetails> petOrderDetails;
 
+	public PetDetails() {
+	}
+
+	public PetDetails(Integer id, String petId, String petName, String petCategory, Long petAge,
+					  int petAvailibility, Double petPrice, List<PetOrderDetails> petOrderDetails) {
+		this.id = id;
+		this.petId = petId;
+		this.petName = petName;
+		this.petCategory = petCategory;
+		this.petAge = petAge;
+		this.petAvailibility = petAvailibility;
+		this.petPrice = petPrice;
+		this.petOrderDetails = petOrderDetails;
+	}
 }
