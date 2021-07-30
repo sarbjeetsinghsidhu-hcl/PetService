@@ -19,6 +19,11 @@ import lombok.Data;
 @Data
 public class PetDetails implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -46,18 +51,4 @@ public class PetDetails implements Serializable {
 	@OneToMany(mappedBy="petDetails")
 	private List<PetOrderDetails> petOrderDetails;
 
-	public PetDetails() {
-	}
-
-	public PetDetails(Integer id, String petId, String petName, String petCategory, Long petAge,
-					  int petAvailibility, Double petPrice, List<PetOrderDetails> petOrderDetails) {
-		this.id = id;
-		this.petId = petId;
-		this.petName = petName;
-		this.petCategory = petCategory;
-		this.petAge = petAge;
-		this.petAvailibility = petAvailibility;
-		this.petPrice = petPrice;
-		this.petOrderDetails = petOrderDetails;
-	}
 }

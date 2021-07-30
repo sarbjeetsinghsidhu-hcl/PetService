@@ -14,27 +14,17 @@ public class ExceptionHandlerInterceptor extends ResponseEntityExceptionHandler 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ExceptionHandlerInterceptor.class);
 	
 	@ExceptionHandler(PetNotFound.class)
-	public ResponseEntity<ErrorResponse> handleWhilePetNotFound(PetNotFound exception) {
+	public ResponseEntity<ErrorResponse> handleFavouriteNotFound(PetNotFound exception) {
 		ErrorResponse response = new ErrorResponse(exception.getMessage());
 		return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
-	}
+	}	
 
 	@ExceptionHandler(RecordExistException.class)
-	public ResponseEntity<ErrorResponse> handleWhileRecordExists(RecordExistException exception) {
+	public ResponseEntity<ErrorResponse> handleFavouriteNotFound(RecordExistException exception) {
 		ErrorResponse response = new ErrorResponse(exception.getMessage());
 		return new ResponseEntity<>(response, HttpStatus.CONFLICT);
 	}
-	@ExceptionHandler(NoSuchUserException.class)
-	public ResponseEntity<ErrorResponse> handleWhileUserNotFound(NoSuchUserException exception) {
-		ErrorResponse response = new ErrorResponse(exception.getMessage());
-		return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
-	}
-	@ExceptionHandler(AuthenticationException.class)
-	public ResponseEntity<ErrorResponse> handleWhilePasswordWrong(AuthenticationException exception) {
-		ErrorResponse response = new ErrorResponse(exception.getMessage());
-		return new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
-	}
-
+	
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<ErrorResponse> handleFavouriteNotFound(Exception exception) {
 		ErrorResponse response = new ErrorResponse(exception.getMessage());
