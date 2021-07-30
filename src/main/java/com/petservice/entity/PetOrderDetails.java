@@ -35,5 +35,14 @@ public class PetOrderDetails {
 	
 	@Column(name="purchased_on")
 	private LocalDate purchasedOn;
-	
+
+	public PetOrderDetails(Long id, PetDetails petDetails, UserDetails userDetails, LocalDate purchasedOn) {
+		this.id = id;
+		this.petDetails = petDetails;
+		this.userDetails = userDetails;
+		this.purchasedOn = purchasedOn;
+	}
+
+	public PetOrderDetails() {
+	}
 }

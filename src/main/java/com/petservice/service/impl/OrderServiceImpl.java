@@ -9,6 +9,7 @@ import com.petservice.exception.EmptyFieldException;
 import com.petservice.exception.NoSuchUserException;
 import com.petservice.exception.PetNotFound;
 import com.petservice.exception.PetSoldOutException;
+import com.petservice.repository.OrderRepository;
 import com.petservice.repository.PetDetailsRepository;
 import com.petservice.repository.UserDetailsRepository;
 import com.petservice.service.OrderService;
@@ -24,32 +25,33 @@ import java.util.Optional;
 public class OrderServiceImpl implements OrderService {
 
     @Autowired
+    private OrderRepository orderRepository;
+
+    @Autowired
     private PetDetailsRepository petDetailsRepository;
     @Autowired
     private UserDetailsRepository repository;
+
     @Override
     public OrderResponseDto buyPet(OrderRequestDto orderRequestDto) {
-        if(orderRequestDto.getPetId() == null || orderRequestDto.getUserId() == null)
+        if (orderRequestDto.getPetId() == null || orderRequestDto.getUserId() == null)
             throw new EmptyFieldException("One or more fields are empty");
         UserDetails user = repository.findByUserId(orderRequestDto.getUserId());
-        if(user == null)
+        if (user == null)
             throw new NoSuchUserException("User cannot be found");
         Optional<PetDetails> petDetails = petDetailsRepository.findByPetId(orderRequestDto.getPetId());
         PetDetails details = null;
-        if(petDetails.isPresent())
+        if (petDetails.isPresent())
             details = petDetails.get();
         else
             throw new PetNotFound("Pet cannot be found");
-        if(details.getPetAvailibility()==0)
+        if (details.getPetAvailibility() == 0)
             throw new PetSoldOutException("This Pet is sold out and not available for purchase");
         PetOrderDetails petOrderDetails = PetOrderDetails.builder()
                 .petDetails(details)
                 .userDetails(user)
                 .purchasedOn(LocalDate.now()).build();
-        user.setPetOrderDetails(Collections.singletonList(petOrderDetails));
-        details.setPetOrderDetails(Collections.singletonList(petOrderDetails));
-        repository.save(user);
-        petDetailsRepository.save(details);
+        orderRepository.save(petOrderDetails);
         return OrderResponseDto.builder()
                 .message("This pet has been purchased")
                 .petAge(details.getPetAge())
