@@ -18,11 +18,12 @@ import com.petservice.service.UserService;
 @RestController
 @RequestMapping("/api/v1/users")
 public class UserController {
-	
+
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
 	@Autowired
 	private PetService petService;
+
 	/**
 	 * 
 	 * @param userId
@@ -33,7 +34,6 @@ public class UserController {
 	public List<PetDetailsDTO> getPetDetails(@PathVariable("userId") String userId,
 			@RequestParam("page") Optional<Integer> page) {
 		LOGGER.info("Getting Pets");
-		return petService.getPetDetails(userId,page.orElse(0));
-		return null;
+		return petService.getPetDetails(userId, page.orElse(0));
 	}
 }

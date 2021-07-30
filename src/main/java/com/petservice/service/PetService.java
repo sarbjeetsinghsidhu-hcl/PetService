@@ -17,7 +17,7 @@ public interface PetService {
 	 * @param userId
 	 * @return
 	 */
-	public PetDetailsDTO getPetDetails(String userId,int page);
+	public List<PetDetailsDTO> getPetDetails(String userId,int page);
 	
 	/**
 	 * Return all the pet details in the system.

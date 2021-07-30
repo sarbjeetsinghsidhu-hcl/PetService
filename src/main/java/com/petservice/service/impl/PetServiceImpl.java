@@ -36,15 +36,11 @@ public class PetServiceImpl implements PetService {
 	private UserDetailsRepository userDetailsRepository;
 
 	@Override
-	public PetDetailsDTO getPetDetails(String userId,int page) {
-		Page<UserDetails> users = userDetailsRepository.findByUserId(userId, PageRequest.of(page, 5, Sort.Direction.ASC, "petName"));
-		if(users.isEmpty()) {
-			throw new PetNotFound("Not pet's availabe.");
+	public List<PetDetailsDTO> getPetDetails(String userId,int page) {		
+		UserDetails users = userDetailsRepository.findByUserId(userId);
+		if(users != null) {
+			
 		}
-		users.getContent().forEach(user ->{
-			
-			
-		});
 		return null;
 	}
 
